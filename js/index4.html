@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {margin: 0; padding: 0;}
+    ul {list-style: none;}
+
+    .gnb a {
+      background: pink;
+      display: block;
+      line-height: 50px;
+      text-align: center;
+      color: #000;
+    }
+    .gnb a.depth1 {
+      background: #000;
+      color: pink;
+    }
+    .gnb .sub {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  
+  <h1>아코디언</h1>
+  <ul class="gnb">
+    <li>
+      <a href="" class="depth1">대메뉴</a>
+      <ul class="sub">
+        <li><a href="">서브1</a></li>
+        <li><a href="">서브1</a></li>
+        <li><a href="">서브1</a></li>
+        <li><a href="">서브1</a></li>
+        <li><a href="">서브1</a></li>
+        <li><a href="">서브1</a></li>
+        <li><a href="">서브1</a></li>
+        <li><a href="">서브1</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="" class="depth1">대메뉴</a>
+      <ul class="sub">
+        <li><a href="">서브1</a></li>
+        <li><a href="">서브1</a></li>
+        <li><a href="">서브1</a></li>
+        <li><a href="">서브1</a></li>
+        <li><a href="">서브1</a></li>
+        <li><a href="">서브1</a></li>
+        <li><a href="">서브1</a></li>
+        <li><a href="">서브1</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="" class="depth1">대메뉴</a>
+      <ul class="sub">
+        <li><a href="">서브1</a></li>
+        <li><a href="">서브1</a></li>
+        <li><a href="">서브1</a></li>
+        <li><a href="">서브1</a></li>
+        <li><a href="">서브1</a></li>
+        <li><a href="">서브1</a></li>
+        <li><a href="">서브1</a></li>
+        <li><a href="">서브1</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(function(){
+      // $('.gnb .depth1').click(function(e){
+      //   e.preventDefault();
+      //   $('.gnb .sub').stop().slideUp();
+      //   $(this).siblings().stop().slideToggle();
+      // });
+      $('.gnb .depth1').click(function(e){
+        e.preventDefault();
+        sub = $(this).siblings();
+        
+        if(sub.css('display') === 'none') {
+          $('.gnb .sub').stop().slideUp();
+          $(this).siblings().stop().slideToggle();
+        } else {
+            $('.gnb .sub').stop().slideUp();
+          }
+      });
+    });
+  </script>
+
+</body>
+</html>

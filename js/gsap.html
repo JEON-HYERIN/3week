@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {margin: 0; padding: 0;}
+    button {
+      padding: 30px;
+    }
+    .box {
+      width: 100px;
+      height: 100px;
+      background: #f00;
+      margin: 10px;
+    }
+  </style>
+</head>
+<body>
+  <button class="btn-play">play</button>
+  <button class="btn-pause">pause</button>
+  <button class="btn-restart">restart</button>
+  <button class="btn-reverse">reverse</button>
+  
+  <div class="wrap">
+    <div class="box">@</div>
+    <div class="box">@</div>
+    <div class="box">@</div>
+    <div class="box">@</div>
+    <div class="box">@</div>
+    <div class="box">@</div>
+  </div>
+  <h1>gsap.to</h1>
+  <h1>gsap.from</h1>
+  <h1>gsap.fromTo</h1>
+
+  <h1>gsap.timeline</h1>
+  <h2>stagger</h2>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/ScrollTrigger.min.js"></script>
+
+  <script>
+    tl = gsap.timeline({
+      //디폴트세팅
+      defaults: {
+        stagger: 0.01,
+      },
+      paused: true
+    })
+    tl.to('.box', {x: 100})
+    .to('.box', {y: 100})
+    .to('.box', {x: 200})
+
+    // motion = gsap.to('.box', {
+    //   // x: 100, //100px
+    //     xPercent: 200,
+    //     scale: 0.8,
+    //     stagger: 0.1,
+    //     paused: true,
+    // })
+    // motion.play()
+    document.querySelector('.btn-play').addEventListener('click', () => {
+      tl.play();
+    });
+    document.querySelector('.btn-pause').addEventListener('click', () => {
+      tl.pause();
+    });
+    document.querySelector('.btn-restart').addEventListener('click', () => {
+      tl.restart();
+    });
+    document.querySelector('.btn-reverse').addEventListener('click', () => {
+      tl.reverse();
+    });
+  </script>
+</body>
+</html>

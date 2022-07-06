@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {margin: 0; padding: 0;}
+    ul {list-style: none;}
+
+    .gnb {display: flex; text-align: center;}
+    .gnb > li {flex: 1;}
+    .gnb > li > a {background: #f00; color: #fff;}
+    .gnb a {display: block; line-height: 50px; background: #ccc;}
+    .gnb ul {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  
+    <ul class="gnb">
+      <li>
+        <a href="">대메뉴1</a>
+        <ul>
+          <li><a href="">서브1</a></li>
+          <li><a href="">서브1</a></li>
+          <li><a href="">서브1</a></li>
+          <li><a href="">서브1</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="">대메뉴1</a>
+        <ul>
+          <li><a href="">서브1</a></li>
+          <li><a href="">서브1</a></li>
+          <li><a href="">서브1</a></li>
+          <li><a href="">서브1</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="">대메뉴1</a>
+        <ul>
+          <li><a href="">서브1</a></li>
+          <li><a href="">서브1</a></li>
+          <li><a href="">서브1</a></li>
+          <li><a href="">서브1</a></li>
+        </ul>
+      </li>
+    </ul>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(function(){
+      $('.gnb > li').hover(function(){
+        // $('.gnb ul').stop().slideDown();
+        $(this).children('ul').stop().slideDown();
+      }, function(){
+        $('.gnb ul').stop().slideUp();
+      })
+    });
+  </script>
+
+</body>
+</html>

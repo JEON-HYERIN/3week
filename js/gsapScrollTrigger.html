@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {margin: 0; padding: 0;}
+    button {
+      padding: 30px;
+    }
+    .box {
+      width: 100px;
+      height: 100px;
+      background: #f00;
+      margin: 10px;
+    }
+    .area {
+      height: 100vh;
+      background: #ccc;
+      margin: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .here {
+      color: #fff;
+      background: #00f;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="area">
+    <h1 data-y="100">안녕?</h1>
+  </div>
+  <div class="area">
+    <h1 data-y="200">안녕?</h1>
+  </div>
+  <div class="area">
+    <h1 data-y="300">안녕?</h1>
+  </div>
+  <div class="area here">
+    <h1 data-y="400">안녕하세요?</h1>
+  </div>
+  <div class="area">
+    <h1 data-y="500">안녕?</h1>
+  </div>
+  <div class="area">
+    <h1 data-y="600">안녕?</h1>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/ScrollTrigger.min.js"></script>
+
+  <script>
+    // h1 = document.querySelectorAll('h1');
+    // h1.forEach(element => {
+      
+    // });
+    gsap.utils.toArray('h1').forEach(headElement => {
+      yval = headElement.dataset.y ? headElement.dataset.y : 0;
+      // console.log(x);
+      gsap.fromTo(headElement, {
+        opacity: 0,
+        scale: 10,
+      }, {
+          scrollTrigger: {
+          trigger: headElement,
+          start: '0% 50%', 
+          end: '100% 50%',
+          markers: true,
+        },
+        opacity: 3,
+        scale: 1,
+        // y:yval
+      });
+    });
+
+    // gsap.to('.here h1',{
+    //   scrollTrigger: {
+    //     trigger: '.here',
+    //     // start: 'top top',  //[트리거 기준, 윈도우 기준]
+    //     // end: 'bottom top', //[트리거 기준, 윈도우 기준]
+    //     start: '0% 0%',  //[트리거 기준, 윈도우 기준]
+    //     // end: '100% 0%', //[트리거 기준, 윈도우 기준]
+    //     end: '+=100%', //[트리거 기준, 윈도우 기준]
+    //     markers: true,
+    //     scrub: 1,
+    //     pin: true,
+    //   },
+    //   scale: 2,
+    //   rotation: 360
+    // })
+
+    gsap.to('.here h1',{
+      scrollTrigger: {
+        trigger: '.here',
+        start: '0% 0%',  //[트리거 기준, 윈도우 기준]
+        end: '100% 50%', //[트리거 기준, 윈도우 기준]
+        markers: true,
+        // onEnter, 도달
+        // onLeave, 떠났을 때
+        // onEnterBack, 떠났다가 도달 [멀리]
+        // onLeaveBack, 도달 후 다시 전으로 [가까이]
+        // toggleActions: "play pause resume reset",
+      //   OnEnter: () => {
+      //     alert('11');
+      //   }
+      // },
+      toggleClass: {targets: ".here", className: "active"},
+      },
+      scale: 2,
+      rotation: 360
+    })
+    
+  </script>
+</body>
+</html>

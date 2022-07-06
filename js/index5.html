@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {margin: 0; padding: 0;}
+    ul {list-style: none;}
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100px;
+      background: #f00;
+      transition:  transform .3s .1s;
+    }
+    header.hide {
+      transform: translateY(-100%);
+    }
+    main {}
+    main div {
+      height: 100vh;
+      background: #ccc;
+      margin: 50px;
+    }
+    main div.here {
+      background: #00f;
+    }
+    .fix-area {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      font-size: 50px;
+      font-weight: bold;
+      z-index: 10;
+      padding: 50px;
+    }
+  </style>
+</head>
+<body>
+  
+  <header></header>
+  <main>
+    <div></div>
+    <div class="here">here</div>
+    <div></div>
+  </main>
+  <div class="fix-area"></div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(function(){
+      // $(window).scroll(function(){
+      //   curr = $(this).scrollTop();
+      //   target = $('.here').offset().top - $('header').height();
+      //   target = $('.here').offset().top - $(window).height();
+
+      //   if(curr >= target) {
+      //     alert('효과발생');
+      //   }
+      //   $('.fix-area').html(`${curr}/////${target}`);
+      // });
+      // $(window).trigger('scroll');
+
+      let lastScroll = 0;
+      $(window).scroll(function(){
+        curr = $(this).scrollTop();
+
+        if(curr > lastScroll) {
+          $('header').addClass('hide');
+        } else {
+          $('header').removeClass('hide');
+        }
+        lastScroll = curr;
+      });
+    });
+  </script>
+
+</body>
+</html>

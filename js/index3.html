@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {margin: 0; padding: 0;}
+    ul {list-style: none;}
+
+    .tab-nav {display: flex;}
+    .tab-nav a {flex: 1; display: block; height: 50px; line-height: 50px; background: #ccc; text-align: center;}
+    .tab-nav a.active {background: #000; color: #fff;}
+
+    .content {}
+    .content .cont {display: none;}
+    .content .cont.active {display: block; font-size: 100px;}
+    .top, .bottom {height: 100vh;}
+  </style>
+</head>
+<body>
+  <div class="top"></div>
+
+  <div class="tab-nav">
+    <a href="#detail"  data-target="#detail"class="active">디테일</a>
+    <a href="#review" data-target="#review">리뷰</a>
+    <a href="#qna" data-target="#qna">문의</a>
+  </div>
+
+  <div class="content">
+    <div id="detail" class="cont active">@디테일</div>
+    <div id="review" class="cont">@리뷰</div>
+    <div id="qna" class="cont">@문의</div>
+  </div>
+
+  <!-- 접근성 맞춘버전 -->
+  <!-- <div class="content">
+    <div class="tab-con">
+      <h3><a href="">디테일</a></h3>
+      <div class="cont"><a href="">내용물1</a></div>
+    </div>
+    <div class="tab-con">
+      <h3><a href="">리뷰</a></h3>
+      <div class="cont"><a href="">내용물2</a></div>
+    </div>
+    <div class="tab-con">
+      <h3><a href="">문의</a></h3>
+      <div class="cont"><a href="">내용물3</a></div>
+    </div>
+  </div> -->
+  
+  <div class="bottom"></div>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(function(){
+
+      $('.tab-nav a').click(function(e){
+        e.preventDefault();
+        // id = $(this).attr('href');
+        data = $(this).data('target');
+        $(this).addClass('active').siblings().removeClass('active');
+        // $(id).addClass('active').siblings().removeClass('active');
+        $(data).addClass('active').siblings().removeClass('active');
+      });
+    });
+  </script>
+
+</body>
+</html>

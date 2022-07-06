@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+  <style>
+    * {margin: 0; padding: 0;}
+    ul {list-style: none;}
+    body {
+      background: #ccc;
+    }
+    .slide {
+      height: 500px;
+    }
+    .slide .swiper-slide {background: #fff; transition: 0.3s;}
+    .slide .swiper-slide {}
+    .slide .swiper-slide.scale {
+     transform: scale(0.8); 
+    }
+    .page {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1;
+      width: auto;
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="swiper slide">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">1</div>
+      <div class="swiper-slide">1</div>
+      <div class="swiper-slide">1</div>
+      <div class="swiper-slide">1</div>
+      <div class="swiper-slide">1</div>
+      <div class="swiper-slide">1</div>
+      <div class="swiper-slide">1</div>
+    </div>
+    <div class="page">1@2</div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <script>
+    $(function(){
+
+      total = 0;
+      if (total < 10 && total !== 0) {
+        console.log('0'+total);
+      } else {
+        console.log(total);
+      }
+
+
+      var slide = new Swiper(".slide", {
+        pagination: {
+          el: ".page",
+          type: "custom",
+          renderCustom:	function(swiper, current, total) {
+            return `${current}!@#!@#${total}`
+          }
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+      });
+
+      // slide.on('slideChange', function(){
+      //   console.log('11');
+      // });
+      slide.on('touchStart', function(){
+        $('.swiper-slide').addClass('scale');
+      });
+      slide.on('touchEnd', function(){
+        $('.swiper-slide').removeClass('scale');
+      });
+    });
+  </script>
+
+</body>
+</html>
